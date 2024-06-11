@@ -12,11 +12,11 @@
     "email": {
       "type": "string"
     },
-    "password_hash": {
+    "password": {
       "type": "string"
     }
   },
   "required": [
-    "name", "user_name", "email", "password_hash"
+    "name", "user_name", "email", "password"
   ]
 }
