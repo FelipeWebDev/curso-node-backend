@@ -14,15 +14,23 @@ class AuthController {
         return res.status(401).json({ error: "We need an e-mail or a password" });
     }
 
-    const verifyUser = await Users.findOne({
+    const user = await Users.findOne({
       where: whereClause
     });
 
-    if (!verifyUser) {
+    if (!user) {
       return res.status(401).json({ error: "User not found" });
     }
 
-    return res.status(200).json({ user: verifyUser });
+    if (!password) {
+      return res.status(401).json({ error: "Insert your password" });
+    }
+
+    if (!await user.checkPassword(password)) {
+      return res.status(401).json({ error: "Password does not match" });
+    }
+
+    return res.status(200).json({ user });
   }
 }
 
