@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const Users = require("../models/Users");
+const { encrypt } = require("../../utils/crypt");
 
 class AuthController {
   async authenticate(req, res) {
@@ -7,15 +8,15 @@ class AuthController {
 
     let whereClause = {};
     if (email) {
-        whereClause = {email}
+      whereClause = { email };
     } else if (user_name) {
-        whereClause = {user_name}
+      whereClause = { user_name };
     } else {
-        return res.status(401).json({ error: "We need an e-mail or a password" });
+      return res.status(401).json({ error: "We need an e-mail or a password" });
     }
 
     const user = await Users.findOne({
-      where: whereClause
+      where: whereClause,
     });
 
     if (!user) {
@@ -26,11 +27,26 @@ class AuthController {
       return res.status(401).json({ error: "Insert your password" });
     }
 
-    if (!await user.checkPassword(password)) {
+    if (!(await user.checkPassword(password))) {
       return res.status(401).json({ error: "Password does not match" });
     }
 
-    return res.status(200).json({ user });
+    const { id, user_name: userName } = user;
+
+    const {iv, content} = encrypt(id);
+    const newId = `${iv}:${content}`;
+    
+    const token = jwt.sign({newId}, process.env.HASH_BCRYPT, {
+      expiresIn: "7d",
+    });
+
+    return res.status(200).json({
+      user: {
+        id,
+        user_name: userName,
+      },
+      token,
+    });
   }
 }
 
