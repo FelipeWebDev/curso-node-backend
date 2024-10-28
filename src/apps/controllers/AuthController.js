@@ -6,11 +6,11 @@ class AuthController {
   async authenticate(req, res) {
     const { user_name, email, password } = req.body;
 
-    let whereClause = {};
+    const whereClause = {};
     if (email) {
-      whereClause = { email };
+      whereClause.email = email;
     } else if (user_name) {
-      whereClause = { user_name };
+      whereClause.user_name = user_name;
     } else {
       return res.status(401).json({ error: "We need an e-mail or a password" });
     }
@@ -36,8 +36,8 @@ class AuthController {
     const {iv, content} = encrypt(id);
     const newId = `${iv}:${content}`;
     
-    const token = jwt.sign({newId}, process.env.HASH_BCRYPT, {
-      expiresIn: "7d",
+    const token = jwt.sign({userId: newId}, process.env.HASH_BCRYPT, {
+      expiresIn: process.env.EXPIRES_IN,
     });
 
     return res.status(200).json({
