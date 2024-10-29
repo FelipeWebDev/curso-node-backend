@@ -12,10 +12,13 @@ const AuthController = require("./apps/controllers/AuthController");
 const router = new Router();
 
 router.post("/user", schemaValidator(userSchema), UserController.create);
-
 router.post("/auth", schemaValidator(authSchema), AuthController.authenticate);
 
 router.use(AuthMiddleware);
+
+router.put("/user", UserController.update);
+
+router.delete("/user", UserController.delete);
 
 router.get("/health", (req, res) => {
   return res.send({
