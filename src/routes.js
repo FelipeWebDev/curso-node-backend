@@ -9,21 +9,21 @@ const UserController = require("./apps/controllers/UserController");
 const authSchema = require('./schema/auth.schema.json');
 const AuthController = require("./apps/controllers/AuthController");
 
-const router = new Router();
+const routes = new Router();
 
-router.post("/user", schemaValidator(userSchema), UserController.create);
-router.post("/auth", schemaValidator(authSchema), AuthController.authenticate);
+routes.post("/user", schemaValidator(userSchema), UserController.create);
+routes.post("/auth", schemaValidator(authSchema), AuthController.authenticate);
 
-router.use(AuthMiddleware);
+routes.use(AuthMiddleware);
 
-router.put("/user", UserController.update);
+routes.put("/user", UserController.update);
+routes.delete("/user", UserController.delete);
+routes.get("/user-profile", UserController.userProfile);
 
-router.delete("/user", UserController.delete);
-
-router.get("/health", (req, res) => {
+routes.get("/health", (req, res) => {
   return res.send({
     message: "Connected with success",
   });
 });
 
-module.exports = router;
+module.exports = routes;
