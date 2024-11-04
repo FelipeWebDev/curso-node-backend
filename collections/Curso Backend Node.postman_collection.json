@@ -204,6 +204,43 @@
 			]
 		},
 		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Create Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\": \"https://wallup.net/wp-content/uploads/2019/09/06/289798-cowboy-bebop-748x421.jpg\",\r\n    \"description\": \"Cowboy Bepop\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/new-post",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"new-post"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Health",
 			"request": {
 				"method": "GET",
