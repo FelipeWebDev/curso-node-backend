@@ -237,6 +237,34 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{API_URL}}/delete-post/2",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"delete-post",
+								"2"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
