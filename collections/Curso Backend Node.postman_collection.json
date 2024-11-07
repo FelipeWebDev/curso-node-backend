@@ -272,6 +272,34 @@
 					"response": []
 				},
 				{
+					"name": "Add Like to Post",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{API_URL}}/add-like/3",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"add-like",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Delete Post",
 					"request": {
 						"method": "DELETE",
