@@ -144,7 +144,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user_name\": \"FelipeWebDev2\",\r\n    \"email\": \"fehliveon2@live.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"user_name\": \"FelipeWebDev2\",\r\n    \"email\": \"fehliveon2@live.com\",\r\n    \"password\": \"654321\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -219,6 +219,38 @@
 						],
 						"body": {
 							"mode": "raw",
+							"raw": "{\r\n    \"image\": \"image.jpg\",\r\n    \"description\": \"Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/post",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
 							"raw": "{\r\n    \"image\": \"https://wallup.net/wp-content/uploads/2019/09/06/289798-cowboy-bebop-748x421.jpg\",\r\n    \"description\": \"Cowboy Bepop\"\r\n}",
 							"options": {
 								"raw": {
@@ -227,12 +259,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{API_URL}}/new-post",
+							"raw": "{{API_URL}}/post/3",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
-								"new-post"
+								"post",
+								"3"
 							]
 						}
 					},
@@ -254,13 +287,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{API_URL}}/delete-post/2",
+							"raw": "{{API_URL}}/post/1",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
-								"delete-post",
-								"2"
+								"post",
+								"1"
 							]
 						}
 					},
