@@ -326,6 +326,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "List Posts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{API_URL}}/my-posts",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"my-posts"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

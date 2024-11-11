@@ -81,6 +81,33 @@ class PostController {
      });
   }
 
+  async listMyPosts(req, res) {
+    const allPosts = await Posts.findAll({
+      where: {
+        author_id: req.userId
+      },
+    });
+
+    if (!allPosts) {
+      return res.status(404).json({ message: "Failed to list the author posts" });
+    }
+
+    const formattedData = []
+
+    for (const post of allPosts) {
+      formattedData.push({
+        id: post.id,
+        image: post.image,
+        description: post.description,
+        number_likes: post.number_likes
+      })
+    }
+
+    return res.status(200).json({
+      data: formattedData
+    })
+  }
+
   async delete(req, res) {
     const { id } = req.params;
 

@@ -37,6 +37,7 @@ routes.post("/upload", upload.single("Image"), FileController.upload);
 routes.post("/post", schemaValidator(postSchema), PostController.create);
 routes.put("/post/:id", PostController.update);
 routes.put("/add-like/:id", PostController.addLike);
+routes.get("/my-posts", PostController.listMyPosts);
 routes.delete("/post/:id", PostController.delete);
 
 module.exports = routes;
