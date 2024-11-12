@@ -1,4 +1,5 @@
 const Posts = require("../models/Posts");
+const Users = require("../models/Users");
 
 class PostController {
   async create(req, res) {
@@ -83,6 +84,7 @@ class PostController {
 
   async listMyPosts(req, res) {
     const allPosts = await Posts.findAll({
+      attributes: ['id', 'description', 'number_likes', 'image'],
       where: {
         author_id: req.userId
       },
@@ -92,20 +94,29 @@ class PostController {
       return res.status(404).json({ message: "Failed to list the author posts" });
     }
 
-    const formattedData = []
+    return res.status(200).json({
+      data: allPosts
+    })
+  }
 
-    for (const post of allPosts) {
-      formattedData.push({
-        id: post.id,
-        image: post.image,
-        description: post.description,
-        number_likes: post.number_likes
-      })
+  async listAllPosts(req, res) {
+    const allPosts = await Posts.findAll({
+      attributes: ['id', 'description', 'number_likes', 'image'],
+      include: [
+        {
+          model: Users,
+          as: 'user',
+          required: true,
+          attributes: ['id', 'user_name']
+        },
+      ]
+    });
+
+    if (!allPosts) {
+      res.status(401).json({message: "Failed to list posts"})
     }
 
-    return res.status(200).json({
-      data: formattedData
-    })
+    return res.status(200).json({data: allPosts})
   }
 
   async delete(req, res) {

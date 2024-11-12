@@ -328,7 +328,7 @@
 					"response": []
 				},
 				{
-					"name": "List Posts",
+					"name": "List My Posts",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -352,6 +352,36 @@
 							],
 							"path": [
 								"my-posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List All Posts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{API_URL}}/all-posts",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"all-posts"
 							]
 						}
 					},
