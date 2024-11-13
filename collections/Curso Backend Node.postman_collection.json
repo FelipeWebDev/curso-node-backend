@@ -7,10 +7,10 @@
 	},
 	"item": [
 		{
-			"name": "Users",
+			"name": "User",
 			"item": [
 				{
-					"name": "Create User",
+					"name": "User",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -43,20 +43,19 @@
 					"response": []
 				},
 				{
-					"name": "User Profile",
+					"name": "User",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text",
-								"disabled": true
+								"value": "Bearer {{token}}",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Felipe\",\r\n    \"user_name\": \"FelipeWebDev2\",\r\n    \"email\": \"fehliveon2@live.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Felipe\",\r\n    \"old_password\": \"654321\",\r\n    \"new_password\": \"123456\",\r\n    \"confirm_new_password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -76,7 +75,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete User",
+					"name": "User",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -103,7 +102,7 @@
 					"response": []
 				},
 				{
-					"name": "Update User",
+					"name": "User",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -121,12 +120,12 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{API_URL}}/user-profile",
+							"raw": "{{API_URL}}/user",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
-								"user-profile"
+								"user"
 							]
 						}
 					},
@@ -144,7 +143,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user_name\": \"FelipeWebDev2\",\r\n    \"email\": \"fehliveon2@live.com\",\r\n    \"password\": \"654321\"\r\n}",
+							"raw": "{\r\n    \"user_name\": \"FelipeWebDev2\",\r\n    \"email\": \"fehliveon2@live.com\",\r\n    \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -207,7 +206,7 @@
 			"name": "Posts",
 			"item": [
 				{
-					"name": "Create Post",
+					"name": "Posts",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -239,7 +238,37 @@
 					"response": []
 				},
 				{
-					"name": "Update Post",
+					"name": "Posts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{API_URL}}/posts",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Posts",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -272,7 +301,35 @@
 					"response": []
 				},
 				{
-					"name": "Add Like to Post",
+					"name": "Posts",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{API_URL}}/posts/1",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Like",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -301,35 +358,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete Post",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{API_URL}}/posts/1",
-							"host": [
-								"{{API_URL}}"
-							],
-							"path": [
-								"posts",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List My Posts",
+					"name": "My Posts",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -354,36 +383,6 @@
 							"path": [
 								"posts",
 								"my-posts"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List All Posts",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{API_URL}}/posts",
-							"host": [
-								"{{API_URL}}"
-							],
-							"path": [
-								"posts"
 							]
 						}
 					},
