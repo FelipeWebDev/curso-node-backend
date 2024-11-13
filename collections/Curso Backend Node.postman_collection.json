@@ -227,12 +227,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{API_URL}}/post",
+							"raw": "{{API_URL}}/posts",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
-								"post"
+								"posts"
 							]
 						}
 					},
@@ -259,12 +259,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{API_URL}}/post/3",
+							"raw": "{{API_URL}}/posts/3",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
-								"post",
+								"posts",
 								"3"
 							]
 						}
@@ -287,11 +287,12 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{API_URL}}/add-like/3",
+							"raw": "{{API_URL}}/posts/add-like/3",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
+								"posts",
 								"add-like",
 								"3"
 							]
@@ -315,12 +316,12 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{API_URL}}/post/1",
+							"raw": "{{API_URL}}/posts/1",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
-								"post",
+								"posts",
 								"1"
 							]
 						}
@@ -346,11 +347,12 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{API_URL}}/my-posts",
+							"raw": "{{API_URL}}/posts/my-posts",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
+								"posts",
 								"my-posts"
 							]
 						}
@@ -376,12 +378,12 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{API_URL}}/all-posts",
+							"raw": "{{API_URL}}/posts",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
-								"all-posts"
+								"posts"
 							]
 						}
 					},
